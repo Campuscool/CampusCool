@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusCool – Richtig trinken bei Hitze</title>
+  <style>
+    :root{
+      --blue:#00305d; --blue2:#0b4778; --green:#76b82a; --mint:#eef7df;
+      --lightblue:#e8f1fa; --bg:#f6f8fb; --text:#1f2937; --muted:#5b6775;
+      --shadow:0 14px 35px rgba(0,48,93,.10); --radius:24px;
+      --yellow:#fff7d6; --red:#ffe9e9;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+    header{background:rgba(255,255,255,.94);border-bottom:1px solid rgba(0,48,93,.12);position:sticky;top:0;z-index:20;backdrop-filter:blur(12px)}
+    .nav{max-width:1180px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between;gap:22px;align-items:center}
+    .brand{font-weight:800;color:var(--blue);letter-spacing:-.02em}.brand span{color:var(--green)}
+    .nav-links{display:flex;flex-wrap:wrap;gap:14px;font-size:14px;font-weight:700;color:var(--blue)}
+    .nav-links a{text-decoration:none}
+    .wrap{max-width:1180px;margin:auto}
+    .hero{padding:78px 24px 58px;background:
+      radial-gradient(circle at 88% 12%,rgba(118,184,42,.25),transparent 28%),
+      linear-gradient(135deg,#fff 0%,#e8f1fa 52%,#eef7df 100%)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
+    .eyebrow{display:inline-flex;padding:8px 14px;background:rgba(255,255,255,.76);border:1px solid rgba(0,48,93,.1);border-radius:999px;color:var(--blue);font-weight:800;font-size:14px;margin-bottom:18px}
+    h1{margin:0;color:var(--blue);font-size:clamp(42px,6vw,76px);line-height:.98;letter-spacing:-.055em}
+    h1 span{color:var(--green)}
+    .hero h2{margin:18px 0;font-size:clamp(23px,3vw,36px);color:var(--blue)}
+    .lead{font-size:19px;color:#344255;max-width:760px}
+    .button{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(118,184,42,.24)}
+    .button.secondary{background:#fff;color:var(--blue);border:1px solid rgba(0,48,93,.15);box-shadow:none}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+    .water-card{border-radius:34px;background:white;box-shadow:var(--shadow);min-height:390px;position:relative;overflow:hidden;padding:34px;display:grid;place-items:center;text-align:center}
+    .water-card:before{content:"";position:absolute;right:-60px;top:-60px;width:210px;height:210px;border-radius:50%;background:rgba(118,184,42,.18)}
+    .water-bottle{width:170px;height:285px;border-radius:85px 85px 34px 34px;background:linear-gradient(180deg,#f4fbff,#bfe8ff);display:grid;place-items:center;font-size:88px;box-shadow:inset 0 0 0 12px rgba(255,255,255,.65),0 16px 32px rgba(0,48,93,.12)}
+    .caption{font-weight:800;color:var(--blue);font-size:22px;margin-top:24px}
+    section{padding:62px 24px}.anchor{scroll-margin-top:88px}
+    .section-title{margin-bottom:26px;display:flex;justify-content:space-between;gap:28px;align-items:end}
+    .section-title h2{margin:0;color:var(--blue);font-size:clamp(28px,4vw,46px);letter-spacing:-.035em;line-height:1.05}
+    .section-title p{margin:10px 0 0;color:var(--muted);max-width:780px}
+    .grid{display:grid;gap:22px}.cards-3{grid-template-columns:repeat(3,minmax(0,1fr))}.cards-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:0 10px 26px rgba(0,48,93,.08);border:1px solid rgba(0,48,93,.08);height:100%}
+    .card .icon{font-size:38px;margin-bottom:10px}.card h3{margin:0 0 8px;color:var(--blue);font-size:23px;line-height:1.2}.card p,.card li{color:#405066}
+    .soft-blue{background:var(--lightblue)}.soft-green{background:var(--mint)}
+    .info{background:white;border-radius:30px;padding:30px;box-shadow:var(--shadow);display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+    .info .big{font-size:70px}
+    .ampel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .ampel-card{border-radius:24px;padding:24px;box-shadow:var(--shadow);background:white;border-top:8px solid var(--green)}
+    .ampel-card.yellow{border-top-color:#f5b522}.ampel-card.red{border-top-color:#e35d5b}
+    .timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .time-card{background:white;border-radius:22px;padding:22px;border:1px solid rgba(0,48,93,.08);box-shadow:0 10px 26px rgba(0,48,93,.07)}
+    .time{font-weight:900;color:var(--green);font-size:22px}.time-card h3{color:var(--blue);margin:8px 0 8px}
+    .challenge{background:var(--blue);color:white;border-radius:34px;padding:34px;box-shadow:var(--shadow)}
+    .challenge h2,.challenge p{color:white}.checklist{padding-left:0;list-style:none;margin:0}.checklist li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.22)}.checklist li:before{content:"☐";margin-right:10px;color:var(--green);font-weight:900}
+    footer{background:var(--blue);color:white;padding:36px 24px;margin-top:54px}
+    @media(max-width:980px){.hero-grid,.cards-2,.cards-3,.ampel,.timeline,.info{grid-template-columns:1fr}.section-title{display:block}.nav{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">Campus<span>Cool</span> · Trinken</div>
+      <nav class="nav-links">
+        <a href="campuscool_arbeitsschutz_landingpage.html">Zurück zur Hauptseite</a>
+        <a href="#tipps">Trinktipps</a>
+        <a href="#getraenke">Getränke</a>
+        <a href="#routine">Routine</a>
+        <a href="#challenge">Challenge</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">💧 Unterseite · Trinktipps bei Hitze</div>
+          <h1>Richtig trinken <span>bei Hitze</span></h1>
+          <h2>Kleine Routinen, große Wirkung.</h2>
+          <p class="lead">
+            Gerade an heißen Tagen verliert der Körper durch Schwitzen mehr Flüssigkeit als gewöhnlich.
+            Wer regelmäßig trinkt, unterstützt den Kreislauf und hilft dem Körper dabei, seine Temperatur zu regulieren.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#tipps">Trinktipps ansehen</a>
+            
+          </div>
+        </div>
+        <div class="water-card">
+          <div class="water-bottle">💧</div>
+          <div class="caption">Wasser sichtbar platzieren. Regelmäßig trinken. Körper entlasten.</div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <div class="info">
+          <div class="big">❤️</div>
+          <div>
+            <h2 style="margin:0 0 8px;color:#00305d;">Warum ist Trinken bei Hitze so wichtig?</h2>
+            <p style="margin:0;color:#405066;">
+              Was im Körper passiert, wenn es warm wird, erklärt die Seite der Gesunden Hochschule ausführlicher.
+              Diese Unterseite konzentriert sich auf praktische Trinktipps für den Arbeitsalltag.
+            </p>
+            <a class="button secondary" style="margin-top:18px;" href="gesunde_hochschule.html#trinken">Gesundheitswissen ansehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tipps" class="soft-blue anchor">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>Praktische Trinktipps für den Arbeitsalltag</h2>
+            <p>Die Tipps sind bewusst niedrigschwellig gehalten, damit sie direkt in Büro, Labor, Werkstatt oder Außendienst funktionieren.</p>
+          </div>
+        </div>
+
+        <div class="grid cards-3">
+          <article class="card"><div class="icon">🕒</div><h3>Regelmäßig trinken</h3><p>Nicht erst trinken, wenn Durst entsteht. Lieber über den Tag verteilt kleine Mengen trinken.</p></article>
+          <article class="card"><div class="icon">💧</div><h3>Kleine Mengen</h3><p>Regelmäßige kleine Trinkpausen sind oft angenehmer als selten große Mengen auf einmal.</p></article>
+          <article class="card"><div class="icon">🥤</div><h3>Flasche sichtbar platzieren</h3><p>Was sichtbar ist, wird häufiger genutzt. Stellen Sie Wasser gut erreichbar an den Arbeitsplatz.</p></article>
+          <article class="card"><div class="icon">⏰</div><h3>Erinnerungen nutzen</h3><p>Kalender, Smartphone oder Smartwatch können helfen, regelmäßige Trinkpausen einzuplanen.</p></article>
+          <article class="card"><div class="icon">🚰</div><h3>Leitungswasser nutzen</h3><p>Leitungswasser kann auf dem Campus kostenlos genutzt werden. Zusätzlich gibt es in der Zentralbibliothek einen Wasserspender.</p></article>
+          <article class="card"><div class="icon">🤝</div><h3>Im Team erinnern</h3><p>Gerade bei hoher Arbeitsbelastung hilft es, wenn Kolleginnen und Kollegen gegenseitig ans Trinken erinnern.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="getraenke" class="anchor">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>Welche Getränke eignen sich?</h2>
+            <p>Nicht jedes Getränk entlastet den Körper an heißen Tagen gleich gut.</p>
+          </div>
+        </div>
+
+        <div class="ampel">
+          <div class="ampel-card">
+            <h3>🟢 Gut geeignet</h3>
+            <ul>
+              <li>Wasser</li>
+              <li>Mineralwasser</li>
+              <li>ungesüßter Tee</li>
+              <li>Saftschorle, eher dünn gemischt</li>
+            </ul>
+          </div>
+          <div class="ampel-card yellow">
+            <h3>🟡 In Maßen</h3>
+            <ul>
+              <li>Kaffee</li>
+              <li>schwarzer Tee</li>
+              <li>stark gekühlte Getränke</li>
+            </ul>
+          </div>
+          <div class="ampel-card red">
+            <h3>🔴 Weniger geeignet</h3>
+            <ul>
+              <li>Alkohol</li>
+              <li>Energydrinks</li>
+              <li>stark gezuckerte Getränke</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-green">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>Wie viel sollte ich trinken?</h2>
+            <p>Der Flüssigkeitsbedarf ist individuell und hängt unter anderem von Temperatur, körperlicher Aktivität und Gesundheitszustand ab. An heißen Tagen steigt der Bedarf meist deutlich an.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>💡 Orientierung im Alltag</h3>
+          <p>Wenn Durst entsteht, Kopfschmerzen auftreten oder der Urin sehr dunkel ist, kann das ein Hinweis auf Flüssigkeitsmangel sein. Besonders bei körperlicher Arbeit im Freien oder längeren Wegen über den Campus sollte Trinken frühzeitig eingeplant werden.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="routine" class="anchor">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>Trinkroutine für den Arbeitstag</h2>
+            <p>Eine einfache Routine hilft, auch an stressigen Tagen ans Trinken zu denken.</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="time-card"><div class="time">Morgens</div><h3>Flasche füllen</h3><p>Wasser auffüllen und gut sichtbar am Arbeitsplatz platzieren.</p></div>
+          <div class="time-card"><div class="time">Vormittag</div><h3>Kleine Pausen</h3><p>Regelmäßig kleine Mengen trinken, nicht erst bei Durst.</p></div>
+          <div class="time-card"><div class="time">Mittag</div><h3>Zum Essen trinken</h3><p>Beim Essen bewusst ein Getränk einplanen.</p></div>
+          <div class="time-card"><div class="time">Nachmittag</div><h3>Nochmal auffüllen</h3><p>Vor dem Heimweg oder Außentermin erneut trinken.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="challenge" class="anchor">
+      <div class="wrap">
+        <div class="challenge">
+          <h2>CampusCool-Trink-Challenge</h2>
+          <p>Eine einfache Mini-Challenge für heiße Arbeitstage:</p>
+          <ul class="checklist">
+            <li>Trinkflasche morgens auffüllen.</li>
+            <li>Wasser sichtbar auf den Tisch stellen.</li>
+            <li>Jede Stunde bewusst ein paar Schlucke trinken.</li>
+            <li>Kolleginnen und Kollegen freundlich ans Trinken erinnern.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="button" href="campuscool_arbeitsschutz_landingpage.html">Zurück zur CampusCool-Hauptseite</a>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <strong>CampusCool – Cool bleiben. Sicher arbeiten.</strong>
+      <p>Unterseite: Praktische Trinktipps für heiße Arbeitstage.</p>
+    </div>
+  </footer>
+</body>
+</html>

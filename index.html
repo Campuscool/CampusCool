@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusCool – Hitzeschutz am Arbeitsplatz</title>
+  <style>
+    :root {
+      --blue:#00305d; --blue2:#0b4778; --green:#76b82a; --bg:#f6f8fb;
+      --lightgreen:#eef7df; --lightblue:#e8f1fa; --text:#1f2937; --muted:#5b6775;
+      --shadow:0 14px 35px rgba(0,48,93,.10); --radius:22px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+    header{background:rgba(255,255,255,.94);border-bottom:1px solid rgba(0,48,93,.12);position:sticky;top:0;z-index:20;backdrop-filter:blur(12px)}
+    .nav{max-width:1180px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between;gap:22px;align-items:center}
+    .brand{font-weight:800;color:var(--blue);letter-spacing:-.02em}.brand span{color:var(--green)}
+    .nav-links{display:flex;flex-wrap:wrap;gap:14px;font-size:14px;font-weight:700;color:var(--blue)}
+    .nav-links a{text-decoration:none}
+    .hero{background:radial-gradient(circle at top right,rgba(118,184,42,.22),transparent 28%),linear-gradient(135deg,#fff 0%,#e8f1fa 54%,#eef7df 100%);padding:76px 24px 56px}
+    .wrap{max-width:1180px;margin:auto}
+    .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:44px;align-items:center}
+    .eyebrow{display:inline-flex;padding:8px 14px;background:rgba(255,255,255,.75);border:1px solid rgba(0,48,93,.10);border-radius:999px;color:var(--blue);font-weight:800;font-size:14px;margin-bottom:18px}
+    h1{margin:0;font-size:clamp(44px,7vw,84px);line-height:.95;color:var(--blue);letter-spacing:-.055em} h1 span{color:var(--green)}
+    .hero h2{margin:18px 0;font-size:clamp(24px,3vw,38px);color:var(--blue)}
+    .lead{font-size:19px;max-width:760px;color:#344255}
+    .hero-actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(118,184,42,.25);border:0}
+    .button.secondary{background:#fff;color:var(--blue);border:1px solid rgba(0,48,93,.15);box-shadow:none}
+    .hero-card{background:var(--blue);color:#fff;border-radius:34px;padding:34px;box-shadow:var(--shadow);min-height:280px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+    .hero-card:after{content:"";position:absolute;width:180px;height:180px;border-radius:999px;background:rgba(118,184,42,.25);right:-55px;bottom:-55px}
+    .hero-card .icon{font-size:54px;z-index:1}.hero-card strong{font-size:28px;line-height:1.15;z-index:1}.hero-card p{z-index:1}
+    section{padding:64px 24px}.anchor{scroll-margin-top:88px}
+    .section-title{margin-bottom:26px;display:flex;justify-content:space-between;gap:28px;align-items:end}
+    .section-title h2{margin:0;color:var(--blue);font-size:clamp(28px,4vw,46px);letter-spacing:-.035em;line-height:1.05}
+    .section-title p{margin:10px 0 0;color:var(--muted);max-width:760px}
+    .barometer-wrap{max-width:1180px;margin:-26px auto 20px;padding:0 24px;position:relative;z-index:5}
+    .barometer{background:white;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);border:1px solid rgba(0,48,93,.08);display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center}
+    .temp-circle{width:126px;height:126px;border-radius:50%;display:grid;place-items:center;text-align:center;color:var(--blue);background:var(--lightblue);font-weight:900}.temp{font-size:34px;line-height:1}.label{font-size:12px;opacity:.8}
+    .barometer h3{margin:0 0 6px;color:var(--blue);font-size:28px}.barometer p{margin:0;color:var(--muted)}.barometer ul{margin:12px 0 0;padding-left:18px}
+    .status-green{background:var(--lightgreen)}.status-yellow{background:#fff7d6}.status-red{background:#ffe9e9}
+    .grid{display:grid;gap:22px}.cards-2{grid-template-columns:repeat(2,minmax(0,1fr))}.cards-3{grid-template-columns:repeat(3,minmax(0,1fr))}.cards-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:0 10px 26px rgba(0,48,93,.08);border:1px solid rgba(0,48,93,.08);height:100%}
+    .card .icon{font-size:36px;margin-bottom:10px}.card h3{margin:0 0 8px;color:var(--blue);font-size:22px;line-height:1.2}.card p,.card li{color:#405066}.card ul{padding-left:18px;margin-bottom:0}
+    .soft-blue{background:var(--lightblue)}.soft-green{background:var(--lightgreen)}
+    .top-principle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .top-column{background:#fff;border-radius:var(--radius);border-top:8px solid var(--green);padding:24px;box-shadow:var(--shadow)}.top-column:nth-child(2){border-top-color:#f5b522}.top-column:nth-child(3){border-top-color:var(--blue2)}
+    .top-column h3{margin-top:0;color:var(--blue);font-size:24px}
+    .checklist{padding-left:0;list-style:none}.checklist li{padding:9px 0;border-bottom:1px solid rgba(0,48,93,.08)}.checklist li:before{content:"☐";margin-right:10px;color:var(--green);font-weight:900}
+    .info-box{margin-top:22px;background:#fff9e8;border:1px solid rgba(245,181,34,.25);border-radius:var(--radius);padding:24px}
+    .measure-card{min-height:240px;display:flex;flex-direction:column;justify-content:end;background:linear-gradient(to top,rgba(0,48,93,.88),rgba(0,48,93,.08)),linear-gradient(135deg,#dceefc,#eaf5dc);color:#fff}.measure-card h3,.measure-card p{color:#fff}
+    .video-box{display:grid;grid-template-columns:1fr 1fr;gap:24px}.video-placeholder{border-radius:var(--radius);background:linear-gradient(135deg,rgba(0,48,93,.92),rgba(11,71,120,.72)),radial-gradient(circle at top right,rgba(118,184,42,.7),transparent 30%);color:#fff;min-height:300px;padding:30px;display:flex;flex-direction:column;justify-content:center;text-align:center}.video-placeholder .play{font-size:62px;margin-bottom:12px}
+    .downloads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.download{background:#fff;border-radius:18px;padding:18px 20px;text-decoration:none;color:var(--blue);font-weight:800;border:1px solid rgba(0,48,93,.10);display:flex;justify-content:space-between;align-items:center}
+    footer{background:var(--blue);color:#fff;padding:36px 24px;margin-top:54px}
+    @media(max-width:980px){.hero-grid,.barometer,.video-box,.top-principle,.cards-2,.cards-3,.cards-4,.downloads{grid-template-columns:1fr}.section-title{display:block}.nav{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<header><div class="nav"><div class="brand">Campus<span>Cool</span> · Arbeitsschutz</div><nav class="nav-links">
+<a href="#barometer">Hitzebarometer</a><a href="#buero">Büro</a><a href="#freiluft">Freien</a><a href="#tipps">Tipps</a><a href="#massnahmen">Uni bleibt cool</a><a href="#erstehilfe">Erste Hilfe</a><a href="#downloads">Downloads</a>
+</nav></div></header>
+
+<main>
+<div class="hero"><div class="wrap hero-grid"><div>
+<div class="eyebrow">🌡️ Hitzeschutz an der Universität Würzburg</div>
+<h1>Campus<span>Cool</span></h1><h2>Cool bleiben. Sicher arbeiten.</h2>
+<p class="lead">Hohe Temperaturen können den Arbeitsalltag an der Universität Würzburg spürbar beeinflussen. Sie wirken sich auf Konzentration, Leistungsfähigkeit und Wohlbefinden aus und können bei starker Belastung auch gesundheitliche Risiken mit sich bringen.</p>
+<p class="lead">Mit <strong>CampusCool</strong> bündelt der Arbeitsschutz wichtige Informationen, praktische Handlungsempfehlungen und Materialien zum Hitzeschutz am Arbeitsplatz. Die Seite richtet sich an Studierende, Mitarbeitende in Büros, Laboren, Werkstätten, technischen Bereichen sowie an Beschäftigte, die im Freien tätig sind.</p>
+<div class="hero-actions"><a class="button secondary" href="#downloads">Materialien herunterladen</a></div>
+</div><aside class="hero-card"><div class="icon">💧☀️</div><strong>Hitzeschutz beginnt mit kleinen Entscheidungen im Arbeitsalltag.</strong><p>Trinken, Schatten, Pausen und Warnsignale im Blick behalten.</p></aside></div></div>
+
+<div id="barometer" class="barometer-wrap anchor"><div id="barometerBox" class="barometer">
+<div id="tempCircle" class="temp-circle"><span class="temp" id="temperature">…</span><span class="label">Würzburg</span></div>
+<div><h3 id="heatTitle">CampusCool-Hitzebarometer lädt…</h3><p id="heatDescription">Die aktuelle Temperatur wird automatisch über Open-Meteo geladen.</p><ul id="heatTips"></ul></div>
+<a class="button secondary" href="#tipps">Mehr Tipps</a></div></div>
+
+<section id="buero" class="anchor"><div class="wrap"><div class="section-title"><div><h2>Arbeitsplatz angenehm gestalten – Büro</h2><p>Auch Büroräume können sich an heißen Tagen stark aufheizen. Mit einfachen Maßnahmen lässt sich die Raumtemperatur häufig etwas reduzieren und der Arbeitstag angenehmer gestalten.</p></div><a class="button" href="campuscool_buero_tipps.html">Mehr Tipps</a></div>
+
+      <div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;">
+        <div style="min-height:260px;border-radius:20px;background:
+          linear-gradient(to top,rgba(0,48,93,.50),rgba(0,48,93,.05)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80') center/cover;display:flex;align-items:end;padding:24px;color:white;font-size:28px;font-weight:bold;">
+          🏢 Angenehm arbeiten – auch an heißen Tagen
+        </div>
+        <div>
+          <h3 style="margin-top:0;color:#00305d;">Mehr Tipps für Büroarbeitsplätze</h3>
+          <p>Ein angenehmes Raumklima trägt wesentlich dazu bei, auch an heißen Tagen konzentriert und gesund arbeiten zu können. Auf der Unterseite finden Sie praktische Empfehlungen rund um Raumklima, Lüften, Sonnenschutz, Arbeitsorganisation und weitere Maßnahmen für heiße Arbeitstage.</p>
+          
+        </div>
+      </div>
+    </div></section>
+
+<section id="freiluft" class="soft-blue anchor"><div class="wrap"><div class="section-title"><div><h2>Arbeiten im Freien: sicher durch heiße Arbeitstage</h2><p>Wer im Freien arbeitet, ist Hitze und UV-Strahlung besonders ausgesetzt. Die Schutzmaßnahmen orientieren sich am TOP-Prinzip: technische Maßnahmen vor organisatorischen Maßnahmen vor persönlichen Maßnahmen.</p></div></div>
+<div class="top-principle">
+<article class="top-column"><h3>⚙️ T – Technische Maßnahmen</h3><ul><li>Sonnensegel, Pavillons oder Überdachungen nutzen.</li><li><strong>Gut zu wissen:</strong> Das Team des Arbeitsschutzes unterstützt und berät bei der Beschaffung von geeigneten Sonnenschutz-Systemen wie Pavillons oder Schirmen.</li><li>Schattige Pausenbereiche nutzen.</li><li>Gut belüftete Arbeitsbereiche bevorzugen und Hitzestau vermeiden.</li><li>Wenn möglich klimatisierte Fahrzeuge nutzen.</li></ul></article>
+<article class="top-column"><h3>📋 O – Organisatorische Maßnahmen</h3><ul><li>Körperlich anstrengende Tätigkeiten in die Morgen- oder Abendstunden verlegen.</li><li>Schwere Arbeiten möglichst nicht zwischen 11:00 und 16:00 Uhr durchführen.</li><li>Arbeiten wenn möglich in den Schatten verlegen.</li><li>Regelmäßige Kurzpausen einplanen.</li><li>Geeignete Getränke wie Wasser, Saftschorlen oder ungesüßte Tees bereithalten.</li></ul></article>
+<article class="top-column"><h3>🦺 P – Persönliche Maßnahmen</h3>
+<ul>
+<li>Geeignete Kopfbedeckung tragen.</li>
+<li>Leichte, möglichst langärmelige Kleidung wählen.</li>
+<li>Sonnenbrille mit UV-Schutz tragen.</li>
+<li>Sonnencreme mit hohem Lichtschutzfaktor verwenden.</li>
+<li>Ausreichend trinken.</li>
+<li>Warnsignale ernst nehmen.</li>
+</ul>
+
+</article>
+</div>
+<div style="text-align:center;margin:28px 0 0;">
+  <a class="button" href="CampusCool_Checkliste_Arbeiten_im_Freien.pdf" target="_blank">
+    📄 CampusCool-Checkliste herunterladen
+  </a>
+</div>
+<div class="info-box"><strong>Schon gewusst?</strong> Ein normaler Sonnenhut schützt den Kopf vor direkter Sonneneinstrahlung. Für längere Arbeiten im Freien sind Modelle mit breiter Krempe sowie Nacken- und Ohrenschutz besonders empfehlenswert.</div></div></section>
+
+
+<section id="tipps" class="section anchor-offset">
+  <div class="section-title">
+    <div>
+      <h2>Gut durch heiße Tage</h2>
+      <p>Nicht nur am Arbeitsplatz, sondern auch im Alltag können kleine Verhaltensweisen dabei helfen, heiße Tage besser zu bewältigen.</p>
+    </div>
+  </div>
+
+  <div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;max-width:1180px;margin:0 auto;">
+      <div style="min-height:260px;border-radius:20px;background:
+      linear-gradient(to top,rgba(0,48,93,.50),rgba(0,48,93,.05)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80') center/cover;display:flex;align-items:end;padding:24px;color:white;font-size:28px;font-weight:bold;">
+      ☀️ Alltagstipps für heiße Tage
+      </div>
+      <div>
+        <h3 style="margin-top:0;color:#00305d;">Gesund durch den Sommer</h3>
+        <p>Auf der Unterseite finden Sie hilfreiche Empfehlungen zu Ernährung, Schlaf, Erholung, Körperkühlung, Medikamenten und weiteren Gesundheitstipps für heiße Tage.</p>
+        <a class="button" href="campuscool_allgemeine_tipps.html">Alle Alltagstipps ansehen →</a>
+      </div>
+  </div>
+</section>
+
+
+<section id="massnahmen" class="soft-green anchor"><div class="wrap"><div class="section-title"><div><h2>Die Uni bleibt cool</h2><p>Die Universität Würzburg setzt bereits verschiedene Maßnahmen um, um die Belastung durch Hitze auf dem Campus zu reduzieren und Aufenthalts- sowie Arbeitsbereiche angenehmer zu gestalten.</p></div></div>
+<div class="grid cards-3">
+<a class="card measure-card" target="_blank" href="https://www.google.com/maps?q=49.78487055170443,9.972022757204071" style="text-decoration:none;"><h3>Campusgarten und Campusbänke</h3><p>Begrünte und schattigere Aufenthaltsbereiche bieten Möglichkeiten für Pausen und kurze Erholung.</p></a>
+<a class="card measure-card" target="_blank" href="https://www.google.com/maps/place/Mensateria+Campus+Nord/@49.7845439,9.9692746,17.7z/data=!3m1!5s0x47a28fc8844e5345:0x229c4490977b76f3!4m6!3m5!1s0x47a28fc883e40fb1:0xd9a748434ff96467!8m2!3d49.7854982!4d9.9693121!16s%2Fg%2F11bwny3fr5?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" style="text-decoration:none;"><h3>Sonnensegel an der Mensateria</h3><p>Das Sonnensegel schafft zusätzliche Verschattung im Außenbereich.</p></a>
+<a class="card measure-card" target="_blank" href="https://www.google.com/maps/place/Universitätsbibliothek+Würzburg/@49.7830292,9.9686865,17.7z/data=!3m1!5s0x47a28fc654224575:0xff712fd1b09763ad!4m6!3m5!1s0x47a28fc693564985:0xfebc43d51f1c88ce!8m2!3d49.7825463!4d9.9687996!16s%2Fg%2F120x6n4x?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" style="text-decoration:none;"><h3>Leitungswasser und Wasserspender</h3><p>Leitungswasser kann auf dem Campus kostenlos genutzt werden. Zusätzlich gibt es in der Zentralbibliothek einen Wasserspender.</p></a>
+<div class="card measure-card"><h3>Außenjalousien und Außenrollos</h3><p>Neue Gebäude verfügen über außenliegende Jalousien. Am Hubland Nord wurden Außenrollos nachgerüstet.</p></div>
+<div class="card measure-card"><h3>Fassadenbegrünung</h3><p>Begrünte Fassaden am Bibliotheks- und Seminarzentrum können das Mikroklima verbessern.</p></div>
+<div class="card measure-card"><h3>Hitzeschutzfolien</h3><p>In der Informatik wurden Hitzeschutzfolien angebracht, um die Aufheizung zu reduzieren.</p></div>
+</div></div></section>
+
+<section id="erstehilfe" class="anchor"><div class="wrap"><div class="section-title"><div><h2>Warnsignale erkennen & Erste Hilfe</h2><p>Diese CampusCool-Seite zeigt vor allem praktische Schutzmaßnahmen für den Arbeitsalltag. Ausführliche Informationen zu Warnsignalen, gesundheitlichen Folgen und Erster Hilfe finden Sie auf der Seite der Gesunden Hochschule.</p></div></div>
+<div class="video-box"><div class="video-placeholder"><div class="play">▶</div><h3>Interview mit Andreas Petko</h3><p>Im Interview erklärt Andreas Petko vom Hochschulsport, wie man Warnsignale erkennt, richtig reagiert und Hitzebelastung vorbeugen kann.</p><a class="button" href="#">Video ansehen</a></div>
+<article class="card"><div class="icon">❤️</div><h3>Mehr zum Thema Gesundheit bei Hitze</h3><p>Ausführliche Informationen rund um gesundheitliche Auswirkungen von Hitze, Erste Hilfe sowie weitere Präventionstipps finden Mitarbeitende und Studierende auf der Webseite der Gesunden Hochschule.</p><a class="button secondary" href="gesunde_hochschule.html">Zur Gesunden Hochschule</a></article></div></div></section>
+
+<section id="downloads" class="soft-blue anchor"><div class="wrap"><div class="section-title"><div><h2>Downloads</h2><p>Materialien der Kampagne gebündelt zum Download.</p></div></div><div class="downloads">
+<a class="download" href="#">CampusCool-Flyer <span>⬇</span></a><a class="download" href="#">Checkliste mit den wichtigsten Tipps <span>⬇</span></a><a class="download" href="#">Material für Sicherheitsbeauftragte <span>⬇</span></a><a class="download" href="#">Plakatmotive <span>⬇</span></a>
+</div></div></section>
+
+
+
+</main>
+
+<footer><div class="wrap"><strong>CampusCool – Cool bleiben. Sicher arbeiten.</strong><p>Eine Kampagne zum Hitzeschutz am Arbeitsplatz an der Universität Würzburg.</p></div></footer>
+
+<script>
+const lat=49.7913, lon=9.9534;
+const tempEl=document.getElementById("temperature"), titleEl=document.getElementById("heatTitle"), descEl=document.getElementById("heatDescription"), tipsEl=document.getElementById("heatTips"), circleEl=document.getElementById("tempCircle"), boxEl=document.getElementById("barometerBox");
+function setHeatStatus(temp){
+  let s;
+  if(temp<=25){s={c:"status-green",t:"🟢 Alles in Ordnung",d:`Heute werden aktuell etwa ${Math.round(temp)} °C für Würzburg angezeigt. Normale sommerliche Temperaturen.`,tips:["Auch bei angenehmen Temperaturen regelmäßig trinken.","Sonnenschutz nicht vergessen.","Bei längeren Aufenthalten draußen Schatten nutzen."]};}
+  else if(temp<=30){s={c:"status-yellow",t:"🟡 Hohe Temperaturen",d:`Heute werden aktuell etwa ${Math.round(temp)} °C für Würzburg angezeigt. Die Temperaturen können Konzentration und Leistungsfähigkeit bereits beeinträchtigen.`,tips:["Regelmäßig trinken.","Mittagssonne meiden.","Frühmorgendliches Lüften nutzen.","Hitzepausen oder verlängerte Pausen nutzen."]};}
+  else{s={c:"status-red",t:"🔴 Starke Hitzebelastung",d:`Heute werden aktuell etwa ${Math.round(temp)} °C für Würzburg angezeigt. Heute besteht eine erhöhte Belastung durch Hitze.`,tips:["Ausreichend trinken.","Körperliche Belastung reduzieren.","Arbeiten im Freien möglichst in die Früh oder in den Abend verlagern.","Warnsignale ernst nehmen.","Kolleginnen und Kollegen im Blick behalten."]};}
+  tempEl.textContent=`${Math.round(temp)}°C`; titleEl.textContent=s.t; descEl.textContent=s.d; tipsEl.innerHTML=s.tips.map(x=>`<li>${x}</li>`).join("");
+  circleEl.className=`temp-circle ${s.c}`; boxEl.classList.remove("status-green","status-yellow","status-red"); boxEl.classList.add(s.c);
+}
+function fallback(){tempEl.textContent="–"; titleEl.textContent="CampusCool-Hitzebarometer"; descEl.textContent="Die aktuellen Wetterdaten konnten nicht geladen werden. Beachten Sie bei hohen Temperaturen die allgemeinen CampusCool-Empfehlungen."; tipsEl.innerHTML="<li>Regelmäßig trinken.</li><li>Direkte Sonne meiden.</li><li>Pausen einplanen.</li><li>Warnsignale ernst nehmen.</li>";}
+async function loadWeather(){
+  try{const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m&timezone=Europe%2FBerlin`); if(!r.ok)throw new Error("Fehler"); const data=await r.json(); const temp=data?.current?.temperature_2m; if(typeof temp!=="number")throw new Error("Keine Temperatur"); setHeatStatus(temp);}
+  catch(e){console.warn(e);fallback();}
+}
+loadWeather();
+</script>
+</body>
+</html>

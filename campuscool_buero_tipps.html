@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusCool – Tipps fürs Büro</title>
+  <style>
+    :root{
+      --blue:#00305d; --blue2:#0b4778; --green:#76b82a; --mint:#eef7df;
+      --lightblue:#e8f1fa; --bg:#f6f8fb; --text:#1f2937; --muted:#5b6775;
+      --shadow:0 14px 35px rgba(0,48,93,.10); --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+    header{background:rgba(255,255,255,.94);border-bottom:1px solid rgba(0,48,93,.12);position:sticky;top:0;z-index:20;backdrop-filter:blur(12px)}
+    .nav{max-width:1180px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between;gap:22px;align-items:center}
+    .brand{font-weight:800;color:var(--blue);letter-spacing:-.02em}.brand span{color:var(--green)}
+    .nav-links{display:flex;flex-wrap:wrap;gap:14px;font-size:14px;font-weight:700;color:var(--blue)}
+    .nav-links a{text-decoration:none}
+    .wrap{max-width:1180px;margin:auto}
+    .hero{padding:78px 24px 58px;background:
+      radial-gradient(circle at 88% 12%,rgba(118,184,42,.25),transparent 28%),
+      linear-gradient(135deg,#fff 0%,#e8f1fa 52%,#eef7df 100%)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
+    .eyebrow{display:inline-flex;padding:8px 14px;background:rgba(255,255,255,.76);border:1px solid rgba(0,48,93,.1);border-radius:999px;color:var(--blue);font-weight:800;font-size:14px;margin-bottom:18px}
+    h1{margin:0;color:var(--blue);font-size:clamp(42px,6vw,76px);line-height:.98;letter-spacing:-.055em}
+    h1 span{color:var(--green)}
+    .hero h2{margin:18px 0;font-size:clamp(23px,3vw,36px);color:var(--blue)}
+    .lead{font-size:19px;color:#344255;max-width:760px}
+    .button{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(118,184,42,.24)}
+    .button.secondary{background:#fff;color:var(--blue);border:1px solid rgba(0,48,93,.15);box-shadow:none}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+    .photo-card{border-radius:34px;overflow:hidden;background:white;box-shadow:var(--shadow);min-height:390px;position:relative}
+    .photo-card .image{height:310px;background:
+      linear-gradient(to top,rgba(0,48,93,.82),rgba(0,48,93,.06)),
+      url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80') center/cover}
+    .photo-card .caption{padding:22px;color:var(--blue);font-weight:800;font-size:20px}
+    section{padding:62px 24px}.anchor{scroll-margin-top:88px}
+    .section-title{margin-bottom:26px;display:flex;justify-content:space-between;gap:28px;align-items:end}
+    .section-title h2{margin:0;color:var(--blue);font-size:clamp(28px,4vw,46px);letter-spacing:-.035em;line-height:1.05}
+    .section-title p{margin:10px 0 0;color:var(--muted);max-width:760px}
+    .grid{display:grid;gap:22px}.cards-3{grid-template-columns:repeat(3,minmax(0,1fr))}.cards-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:0 10px 26px rgba(0,48,93,.08);border:1px solid rgba(0,48,93,.08);height:100%}
+    .card .icon{font-size:38px;margin-bottom:10px}.card h3{margin:0 0 8px;color:var(--blue);font-size:23px;line-height:1.2}.card p,.card li{color:#405066}
+    .visual-card{min-height:300px;padding:0;overflow:hidden}.visual-card .visual{height:170px;background-size:cover;background-position:center}.visual-card .content{padding:22px}
+    .v1{background-image:linear-gradient(to top,rgba(0,48,93,.55),transparent),url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80')}
+    .v2{background-image:linear-gradient(to top,rgba(0,48,93,.45),transparent),url('https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=900&q=80')}
+    .v3{background-image:linear-gradient(to top,rgba(0,48,93,.45),transparent),url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80')}
+    .v4{background-image:linear-gradient(to top,rgba(0,48,93,.45),transparent),url('https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=900&q=80')}
+    .v5{background-image:linear-gradient(to top,rgba(0,48,93,.45),transparent),url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80')}
+    .v6{background-image:linear-gradient(to top,rgba(0,48,93,.45),transparent),url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80')}
+    .soft-blue{background:var(--lightblue)}.soft-green{background:var(--mint)}
+    .dayplan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .time-card{background:white;border-radius:22px;padding:22px;border:1px solid rgba(0,48,93,.08);box-shadow:0 10px 26px rgba(0,48,93,.07)}
+    .time{font-weight:900;color:var(--green);font-size:22px}.time-card h3{color:var(--blue);margin:8px 0 8px}
+    .checklist{padding-left:0;list-style:none;margin:0}.checklist li{padding:12px 0;border-bottom:1px solid rgba(0,48,93,.08)}.checklist li:before{content:"☐";margin-right:10px;color:var(--green);font-weight:900}
+    .quote{background:var(--blue);color:white;border-radius:34px;padding:36px;box-shadow:var(--shadow);display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+    .quote .big{font-size:64px}.quote p{margin:0;font-size:22px;font-weight:800;line-height:1.3}
+    footer{background:var(--blue);color:white;padding:36px 24px;margin-top:54px}
+    @media(max-width:980px){.hero-grid,.cards-2,.cards-3,.dayplan,.quote{grid-template-columns:1fr}.section-title{display:block}.nav{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">Campus<span>Cool</span> · Büro</div>
+      <nav class="nav-links">
+        <a href="campuscool_arbeitsschutz_landingpage.html">Zurück zur Hauptseite</a>
+        <a href="#tipps">Tipps</a>
+        <a href="#tagesplan">Tagesplan</a>
+        <a href="#checkliste">Checkliste</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">🏢 Unterseite · Arbeiten im Büro bei Hitze</div>
+          <h1>Mehr Tipps für einen <span>angenehmen Arbeitsplatz</span></h1>
+          <h2>Kleine Maßnahmen, spürbare Wirkung.</h2>
+          <p class="lead">
+            Büroräume können sich an heißen Tagen schnell aufheizen. Diese Seite zeigt, wie Sie Ihren Arbeitsplatz
+            mit einfachen Mitteln angenehmer gestalten und Konzentration sowie Wohlbefinden unterstützen können.
+          </p>
+          <div class="hero-actions">
+            
+            <a class="button secondary" href="#checkliste">Checkliste öffnen</a>
+          </div>
+        </div>
+        <div class="photo-card">
+          <div class="image"></div>
+          <div class="caption">CampusCool fürs Büro: lüften, abschatten, pausieren, trinken.</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="tipps" class="anchor">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>So bleibt das Büro angenehmer</h2>
+            <p>Die Tipps sind bewusst kurz und praktisch gehalten, damit sie sich direkt im Büroalltag umsetzen lassen.</p>
+          </div>
+        </div>
+
+        <div class="grid cards-3">
+          <article class="card visual-card">
+            <div class="visual v1"></div>
+            <div class="content">
+              <h3>Richtig lüften</h3>
+              <p>Lüften Sie möglichst früh morgens oder abends, wenn die Außentemperaturen niedriger sind. Während der heißen Tageszeit Fenster nur kurz öffnen.</p>
+            </div>
+          </article>
+
+          <article class="card visual-card">
+            <div class="visual v2"></div>
+            <div class="content">
+              <h3>Jalousien früh schließen</h3>
+              <p>Schließen Sie Jalousien, Rollos oder Vorhänge möglichst frühzeitig, bevor direkte Sonneneinstrahlung den Raum aufheizt.</p>
+            </div>
+          </article>
+
+          <article class="card visual-card">
+            <div class="visual v3"></div>
+            <div class="content">
+              <h3>Wärmequellen reduzieren</h3>
+              <p>Nicht benötigte Geräte, Lampen oder Bildschirme erzeugen zusätzliche Wärme und sollten nach Möglichkeit ausgeschaltet werden.</p>
+            </div>
+          </article>
+
+          <article class="card visual-card">
+            <div class="visual v4"></div>
+            <div class="content">
+              <h3>Ventilatoren sinnvoll nutzen</h3>
+              <p>Ventilatoren senken die Temperatur nicht direkt, können aber das Wärmeempfinden reduzieren. Luftstrom nicht dauerhaft direkt auf Personen richten.</p>
+            </div>
+          </article>
+
+          <article class="card visual-card">
+            <div class="visual v5"></div>
+            <div class="content">
+              <h3>Leichte Kleidung tragen</h3>
+              <p>Luftige und helle Kleidung kann helfen, die Wärmebelastung zu reduzieren, sofern die Tätigkeit dies zulässt.</p>
+            </div>
+          </article>
+
+          <article class="card visual-card">
+            <div class="visual v6"></div>
+            <div class="content">
+              <h3>Pausen bewusst einplanen</h3>
+              <p>Kurze Erholungspausen unterstützen Konzentration und Wohlbefinden. Wenn möglich, Pausen in kühleren oder schattigen Bereichen verbringen.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tagesplan" class="soft-blue anchor">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>Ein Bürotag bei Hitze</h2>
+            <p>So können die Maßnahmen über den Arbeitstag verteilt werden.</p>
+          </div>
+        </div>
+
+        <div class="dayplan">
+          <div class="time-card">
+            <div class="time">08:00</div>
+            <h3>Frisch starten</h3>
+            <p>Wenn möglich lüften, Wasserflasche auffüllen und direkte Sonne frühzeitig aussperren.</p>
+          </div>
+          <div class="time-card">
+            <div class="time">10:30</div>
+            <h3>Arbeitsplatz checken</h3>
+            <p>Wärmequellen reduzieren und kurze Trinkpause einplanen.</p>
+          </div>
+          <div class="time-card">
+            <div class="time">13:00</div>
+            <h3>Mittagshitze beachten</h3>
+            <p>Pausen möglichst an kühleren Orten verbringen und leichte Mahlzeiten bevorzugen.</p>
+          </div>
+          <div class="time-card"><div class="time">14:00</div><h3>Konzentration checken</h3><p>Bei Kopfschmerzen, Schwindel oder starker Müdigkeit eine Pause einlegen, trinken und Warnsignale ernst nehmen.</p></div><div class="time-card"><div class="time">16:00</div><h3>Für morgen mitdenken</h3><p>Falls eine Hitzewelle angekündigt ist: wichtige Aufgaben möglichst für kühlere Tageszeiten planen.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="anchor">
+      <div class="wrap">
+        <div class="quote">
+          <div class="big">💧</div>
+          <p>Durst ist kein Startsignal. Stellen Sie sich Wasser sichtbar auf den Schreibtisch.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="checkliste" class="soft-green anchor">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>CampusCool-Checkliste fürs Büro</h2>
+            <p>Eine kompakte Übersicht für heiße Arbeitstage.</p>
+          </div>
+        </div>
+
+        <div class="grid cards-2">
+          <article class="card">
+            <h3>Morgens</h3>
+            <ul class="checklist">
+              <li>Fenster öffnen, solange es draußen kühler ist.</li>
+              <li>Jalousien oder Rollos schließen, bevor direkte Sonne einfällt.</li>
+              <li>Wasserflasche sichtbar auf den Schreibtisch stellen.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Während des Arbeitstages</h3>
+            <ul class="checklist">
+              <li>Regelmäßig trinken, auch ohne Durstgefühl.</li>
+              <li>Nicht benötigte Geräte ausschalten.</li>
+              <li>Kurzpausen einplanen und Warnsignale ernst nehmen.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div style="margin-top:28px;">
+          <a class="button" href="campuscool_arbeitsschutz_landingpage.html">Zurück zur CampusCool-Hauptseite</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <strong>CampusCool – Cool bleiben. Sicher arbeiten.</strong>
+      <p>Unterseite: Mehr Tipps für einen angenehmen Arbeitsplatz.</p>
+    </div>
+  </footer>
+</body>
+</html>
